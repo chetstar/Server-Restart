@@ -1,0 +1,122 @@
+ {% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+    {% block head %}
+    <title>AC jobs!{% block title %}{% endblock %}</title>
+      <link href="/static/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <meta charset="utf-8">
+
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/datepicker.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/datepicker3.css') }}">
+          <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap-modal.css') }}">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+
+
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/static/css/tablecloth.css" rel="stylesheet">
+    <link href="/static/css/prettify.css" rel="stylesheet">
+  </head>
+
+    <!-- <link rel="shortcut icon" href="{{ url_for('static', filename='ico/favicon.ico') }}"> -->
+    {% endblock %}
+ 
+    {% block navbar %}
+ <nav class="navbar navbar-default navbar-top" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">what</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="navbar-brand" href="http://winspssv3:5000/">AC Production Center</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+      <!--     <li class="inactive"><a href="/allsyntax">Schedule</a></li>-->
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reports <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+                       <li><a href="http://winspssv3:5000/">Job History</a></li>
+
+           <li><a href="http://winspssv3:5000/error">Win/Fail Reports</a></li> 
+     <li><a href="http://winspssv3:5000/clumpview">What's in a Group?</a></li>  
+            <li class="divider"></li>
+                   <li><a href="http://winspssv3:5000/allsyntax">Schedule</a></li>  
+            <li class="divider"></li>
+<!--            <li><a href="/150">History150</a></li>-->
+          </ul>
+        </li>
+     
+ <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Argonaut <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+       <li><a href="http://winspssv4:5000/argonaut">Staging/Production</a></li>   
+            <!--  <li><a href="/addjob">Production System</a></li>   -->
+                        <li><a href="http://winspssv4:5000/">Project Mgmt</a></li>        
+                                                           
+                  <li class="divider"></li>
+
+         <!--    <li class="dropdown-header">Do not go here!</li>
+</div>      -->             </ul>        <li><a href="http://winspssv3:5000/admin"></a></li>
+ </ul>   </ul>  
+         </li>  </ul>       
+      <!--    <a class="btn btn-default pull-right" href="http://winspssv3:5000/admin/userview/new/?url=%2Fadmin%2Fuserview%2F"> <span class=" glyphicon glyphicon-star pull-right"> Add Filter </span> </a>  --> 
+  
+        </li>
+ </div> </div>  
+   
+ </div>
+    {% endblock %}
+
+          {% block content %}
+
+
+    
+          {% endblock %}
+
+
+ {% block scripts %}
+
+  <div id="footer">
+        <div class="container">
+            <div class="row ">
+                &copy; 2014 AC Business Intelligence & Decision Support | All Right Reserved
+
+            </div>
+            
+        </div>
+       
+    </div> 
+{{ super() }}
+
+           <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap-datepicker.js') }}"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+{% endblock %}
+
+
+</html>

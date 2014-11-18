@@ -1,0 +1,90 @@
+{% extends "baseindex.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+          {% block content %}
+{{ super() }}
+    
+
+      <div class="row">
+       
+         <div class="col-md-1"> </div>
+     <div class="col-md-10">
+
+       <span class="glyphicon glyphicon-tree-deciduous "></span> <font size="10"> <strong> Last {{howmuch}} results</strong></font>  <span class="glyphicon glyphicon-tree-deciduous "></span> <font size="10"> <strong></strong></font> 
+    </div></div></div>
+       <div class="row">
+       
+         <div class="col-md-1"> </div>
+     <div class="col-md-2">
+     {{ wtf.quick_form(form) }} </div>     
+         <div class="col-md-3 ">   {{ wtf.quick_form(sform) }} </div>     
+      <div class="alert alert-success pull-right " role="alert"> 
+       
+     <p>   Q'd up jobs have a message <strong>'None'</strong>.</p>
+<p>        Started jobs message is <strong>'Initiated'</strong>.</p>
+       <p> Failed jobs message is <strong>'Code Fail'</strong>.</p>
+       <p> Success jobs message is <strong>'Looks Good'</strong>.</p>
+         </div>
+       
+     </div>
+     </div></div>
+      <div class="row">
+        <div class="col-md-1">
+        </div><div class="col-md-10">
+    <table class="table table-striped" >
+  <!--          <table id="myTable" class="tablesorter"> -->
+<thead> 
+         <h3><strong><tr>
+         <th>Job</th>
+         <th>Start</th>
+         <th>Stop</th>
+           <th>Runtime</th>
+         <th>Status</th>
+         <th>Message</th>
+           <th>When</th>
+         <th></th></tr></strong></h3>
+         </thead> 
+<tbody> 
+  <ol type="1">
+           {% for item in jobList %}
+          <tr><td><li>{{item.job}}</td>
+
+          <td>{{item.start.strftime('%a     %b %d %Y %H:%M')}}</td>
+          <td>{{item.stop.strftime('%a     %b %d %Y %H:%M')}}</td>
+                   <td>{% if item.stop %}{{item.stop - item.start}} {% else %} NA{% endif %}</td>
+                    <td>{% if item.status ==1 %}  <span class="glyphicon glyphicon-ok"></span> {% else %} <span class="glyphicon glyphicon-thumbs-down"></span> {% endif %}</td>
+                  <td>{% if item.message =='Code Fail' %}  <font color="red">{{item.message }}</font> {% else %} {{item.message }} {% endif %}</td>
+                   <td>{{item.cat }}</td>
+          {% endfor %}</ol></tbody> </table>
+
+ </div></div></div>
+    </div></div></div><br><br>
+<!--
+      <div class="jumbotron">
+            <div class="container">
+        <h1>Jobs Center</h1>
+        <p>The one-stop for task tracking.</p>
+  {% for item in jobList %}
+ <p>job {{item.job}}</p>
+     <p>Start {{item.start}}</p>
+     <p>Stop {{item.stop }}</p>
+     <p>Status {{item.status}}</p>
+     <p>Category {{item.cat}}</p>
+     <p>Message {{item.message }}</p>
+     <p>When {{item.whenvar }}</p>
+     <p>SPSS Error {{item.errorvar}}</p>
+     <p>SPSS Error message {{item.errormsgvar }}</p>
+  {% endfor %}
+        <p><a href="/start" class="btn btn-primary btn-lg" role="button">Learn more »</a></p>
+      </div>
+    </div>
+
+-->
+    
+          {% endblock %}
+
+</html>
