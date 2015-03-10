@@ -1,7 +1,8 @@
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 from app import app
 # from app import expect
-from flask import Flask, render_template, request, flash,redirect,url_for,jsonify
-
+import smtplib
 from app import app
 from flask import Flask, render_template, request, flash,redirect,url_for,jsonify
 import datetime
@@ -29,6 +30,34 @@ def restartajaxtest():
 
 @app.route('/restartajax/<computer>')
 def restartajax(computer):
+    def sendEmail(you,html,text,subject):
+        print you
+        me = 'chet@acbhcs.org'
+        # Create message container - the correct MIME type is multipart/alternative.
+        msg = MIMEMultipart('alternative')
+        msg['Subject'] = subject
+        msg['From'] = me
+        msg['To'] = ", ".join(you)
+        # Record the MIME types of both parts - text/plain and text/html.
+        part1 = MIMEText(text, 'plain')
+        part2 = MIMEText(html, 'html')
+        # Attach parts into message container.
+        # According to RFC 2046, the last part of a multipart message, in this case
+        # the HTML message, is best and preferred.
+        msg.attach(part1)
+        msg.attach(part2)
+        # Send the message via local SMTP server.
+        s = smtplib.SMTP("smtp.gmail.com", 587)
+        s.ehlo()
+        s.starttls()
+        s.ehlo
+        with open('//covenas/decisionsupport/meinzer/production/ps/secret/pw.txt','r') as pw:
+            fillPW=pw.readline()
+        s.login('alamedaDST@gmail.com', '%s' % fillPW) 
+        # sendmail function takes 3 arguments: sender's address, recipient's address
+        # and message to send - here it is sent as one string.
+        s.sendmail(me, you, msg.as_string())
+        s.quit()
     # def runJob(computer):
     #     try:
     #         subprocess.call(r"\\covenas\decisionsupport\meinzer\production\bat\restart\%s" % computer)
@@ -55,6 +84,7 @@ def restartajax(computer):
                         err.replace('Offwall','')
                         if "error code 0." in err:
                             worked= "Yes, it worked...................."
+                            sendEmail(['cmeinzer@acbhcs.org'],'restarting %s' % computer,'restarting %s' % computer,'restarting %s' % computer)
                 except Exception,e:
                     print 'there was an exception', e
                 return out,err,worked
